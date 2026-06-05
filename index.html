@@ -879,14 +879,42 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="Aafirebase-config.js"></script>
-<script src="book.js"></script>
+<script>
+/* ═══════════════════════════════════════
+   আল আযীয বুকশপ — Firebase Config (Inline)
+═══════════════════════════════════════ */
+const firebaseConfig = {
+    apiKey: "AIzaSyBQMZ3x2d-2ELopI-3w78EFrcWnfIh2xg0",
+    authDomain: "gronthokanon-8573e.firebaseapp.com",
+    databaseURL: "https://gronthokanon-8573e-default-rtdb.firebaseio.com",
+    projectId: "gronthokanon-8573e",
+    storageBucket: "gronthokanon-8573e.firebasestorage.app",
+    messagingSenderId: "192907327925",
+    appId: "1:192907327925:web:1c469a312aa02bf2fe81fc",
+    measurementId: "G-KFQF4ND0KF"
+};
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+
+const auth = firebase.auth();
+const db   = firebase.database();
+
+if (typeof firebase.firestore === 'function') {
+    window.fsdb = firebase.firestore();
+}
+</script>
+<script>
+/* book.js — না থাকলে খালি array দিয়ে চলবে */
+if (typeof books === 'undefined') { var books = []; }
+</script>
 <script>
 /* ── UTILS ── */
 function escapeHTML(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function isRealUrl(img){return img&&String(img).startsWith('http');}
 
-const ADMIN_EMAIL='bookshopgronthokanon@gmail.com';
+const ADMIN_EMAIL='gronthokanon4309@gmail.com';
 let allOrders=[];
 let curFilter='all';
 let stockData={};
